@@ -87,23 +87,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##Introduction<br>Google is the best search engine for programmers and there are numerous tutorials on YouTube. Unfortunately, China has GFW to block many websites. Here we can use Shadowsocks to deploy our own VPN.</p>
-<p>###Deploy a server on AWS<br>It is quite easy to create an instance through UI interface in AWS console. Here we suggest spot instance to save money. You do not have to deploy a very large instance. t2.micro and 8GB EBS is enough. The instance should be close to China and Tokyo is a good choice.</p>
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Google is the best search engine for programmers and there are numerous tutorials on YouTube. Unfortunately, China has GFW to block many websites. Here we can use Shadowsocks to deploy our own VPN.</p>
+<h3 id="Deploy-a-server-on-AWS"><a href="#Deploy-a-server-on-AWS" class="headerlink" title="Deploy a server on AWS"></a>Deploy a server on AWS</h3><p>It is quite easy to create an instance through UI interface in AWS console. Here we suggest spot instance to save money. You do not have to deploy a very large instance. t2.micro and 8GB EBS is enough. The instance should be close to China and Tokyo is a good choice.</p>
 <p>The tutorial uses Ubuntu 16.04 LTS. You should create a security group which allows <strong>ALL</strong> ports for network traffic.</p>
-<p>###Deploy Shadowsocks<br>Login your AWS instance at Tokyo area through ssh.</p>
+<h3 id="Deploy-Shadowsocks-Server"><a href="#Deploy-Shadowsocks-Server" class="headerlink" title="Deploy Shadowsocks Server"></a>Deploy Shadowsocks Server</h3><p>Login your AWS instance at Tokyo area through ssh.</p>
 <p>First, we install all software dependencies in Ubuntu 16.04 by following commands.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install python-pip</span><br><span class="line">sudo pip install git+https://github.com/shadowsocks/shadowsocks.git@master</span><br></pre></td></tr></table></figure></p>
 <p>Then, we edit important configuration file by typing<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/shadowsocks.json</span><br></pre></td></tr></table></figure></p>
 <p>Here we assume readers are familiar with vim editor. The contents should be<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;server_port&quot;: 8388,</span><br><span class="line">    &quot;local_address&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;local_port&quot;: 1080,</span><br><span class="line">    &quot;password&quot;: &quot;your_password&quot;,</span><br><span class="line">    &quot;timeout&quot;: 300,</span><br><span class="line">    &quot;method&quot;: &quot;aes-256-cfb&quot;,</span><br><span class="line">    &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>Important:</strong> The IP address of server is actually the address of clients and it should be <strong>0.0.0.0</strong> in default. You should change <strong>password</strong> field by yourself.</p>
 <p>Finally, we can start server by<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ssserver -c /etc/shadowsocks.json -d start</span><br></pre></td></tr></table></figure></p>
 <p>or stop server<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ssserver -c /etc/shadowsocks.json -d stop</span><br></pre></td></tr></table></figure></p>
-<p>###Client settings<br>You should download shadowsocks client software <a href="https://shadowsocks.org/en/download/clients.html" target="_blank" rel="noopener">here</a></p>
+<h3 id="Shadowsocks-Client-settings"><a href="#Shadowsocks-Client-settings" class="headerlink" title="Shadowsocks Client settings"></a>Shadowsocks Client settings</h3><p>You should download shadowsocks client software <a href="https://shadowsocks.org/en/download/clients.html" target="_blank" rel="noopener">here</a></p>
 <p>The IP address should be the public IP of AWS instance. You can use Google NOW!</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/How-to-Access-Google-by-Shadowsocks/" data-id="cjprtpmrn0000gbx26nfkbnre" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/17/How-to-Access-Google-by-Shadowsocks/" data-id="cjprtubkt0001hxx2ipcnxx57" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/hello-world/" data-id="cjprtpmrs0001gbx22i3lyumf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/17/hello-world/" data-id="cjprtubkp0000hxx2o6hj57iq" class="article-share-link">Share</a>
       
       
     </footer>
